@@ -1,19 +1,94 @@
-body{
+body, p {
     margin: 0;
+}
+
+button {
+    background: black;
+    color: white;
+    font-weight: bold;
+}
+
+#header {
+    background: black;
+    color: white;
+    padding: 1.5rem 2rem;
+    font-size: 2rem;
+}
+
+#new-book-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 3rem;
+}
+
+#new-book-button {
+    padding: 1em;
+    width: 22.4rem;
+    border-radius: 0.4rem;
+}
+
+#new-book-form {
+    width: 20.4rem;
+    padding: 1rem;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background: lightgrey;
+    border-radius: 0 0 0.4rem 0.4rem;
+}
+
+#form-main {
+    display: flex;
+    gap: 0.5rem;
+}
+
+#form-titles, #form-input {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#form-titles label {
+    height: 1.65rem;
+}
+
+#read-radio {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    align-self: flex-start;
+    padding-left: 0.6rem;
+}
+
+#read {
+    margin-left: 0;
+}
+
+#submit-new-book {
+    align-self: flex-end;
+    margin-right: 0.6rem;
+    margin-top: 1rem;
+    padding: 0.5em 2em;
+    border-radius: 0.4rem;
 }
 
 #book-display {
     display: flex;
-    margin: 5rem;
+    margin: 3rem 5rem;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 1.6rem;
 }
 
 .book-card {
     flex-shrink: 0;
-    margin: 1rem;
-    padding: 0.5rem;
-    border-radius: 1rem;
+    padding: 0.7rem;
+    border-radius: 0.5rem;
     width: 9rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.book-details {
+    margin: 0.7rem 0;
 }

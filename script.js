@@ -1,5 +1,10 @@
 const bookDisplay = document.querySelector("#book-display");
+const newBookButton = document.querySelector("#new-book-button");
+const newBookForm = document.querySelector("#new-book-form");
 
+newBookButton.addEventListener("click", newBookPressed);
+
+let newBookFormDisplayed = false;
 let myLibrary = [];
 
 function Book(title, author, pages, read) {
@@ -27,10 +32,10 @@ function displayBooks() {
         const pages = document.createElement("P");
         const read = document.createElement("P");
 
-        title.classList.add("book-title");
-        author.classList.add("book-author");
-        pages.classList.add("book-pages");
-        read.classList.add("book-read");
+        title.classList.add('book-title', 'book-details');
+        author.classList.add('book-author', 'book-details');
+        pages.classList.add('book-pages', 'book-details');
+        read.classList.add('book-read', 'book-details');
 
         title.innerText = book.title
         author.innerText = book.author
@@ -44,6 +49,22 @@ function displayBooks() {
 
         bookDisplay.appendChild(bookCard);
     });
+}
+
+function newBookPressed() {
+    !newBookFormDisplayed ? showNewBookForm() : hideNewBookForm();
+}
+
+function showNewBookForm() {
+    newBookForm.setAttribute("style", "display: flex");
+    newBookButton.setAttribute("style", "border-radius: 0.4rem 0.4rem 0 0")
+    newBookFormDisplayed = true;
+}
+
+function hideNewBookForm() {
+    newBookForm.setAttribute("style", "display: none");
+    newBookButton.setAttribute("style", "border-radius: 0.4rem")
+    newBookFormDisplayed = false;
 }
 
 let theHobbit = new Book("The Hobbit", "J.R.R. Tolkein", 295, false);
