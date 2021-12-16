@@ -82,6 +82,9 @@ button {
 }
 
 .book-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     flex-shrink: 0;
     padding: 0.7rem;
     border-radius: 0.5rem;
@@ -91,4 +94,8 @@ button {
 
 .book-details {
     margin: 0.7rem 0;
+}
+
+.book-remove {
+    border-radius: 0.2rem;
 }

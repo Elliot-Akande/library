@@ -7,6 +7,7 @@ newBookButton.addEventListener("click", newBookPressed);
 submitNewBookButton.addEventListener("click", submitNewBook);
 
 let newBookFormDisplayed = false;
+let removeBookButtons = [];
 let myLibrary = [];
 
 function Book(title, author, pages, read) {
@@ -18,6 +19,10 @@ function Book(title, author, pages, read) {
     this.info = function () {
         return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read ? "read" : "not read yet"}`
     }
+
+    this.toggleRead = function () {
+        this.read ? this.read = false : this.read = true;
+    }
 }
 
 function addBookToLibrary(book) {
@@ -26,31 +31,45 @@ function addBookToLibrary(book) {
 
 function displayBooks() {
     while (bookDisplay.firstChild) bookDisplay.removeChild(bookDisplay.lastChild);
-    myLibrary.forEach(book => {
+    myLibrary.forEach((book, index) => {
         const bookCard = document.createElement("DIV");
+        const bookDetails = document.createElement("DIV");
+
         bookCard.classList.add("book-card");
+        bookDetails.classList.add("details-container");
+
+        bookCard.setAttribute('data-index', index);
 
         const title = document.createElement("P");
         const author = document.createElement("P");
         const pages = document.createElement("P");
         const read = document.createElement("P");
+        const remove = document.createElement("BUTTON");
 
         title.classList.add('book-title', 'book-details');
         author.classList.add('book-author', 'book-details');
         pages.classList.add('book-pages', 'book-details');
         read.classList.add('book-read', 'book-details');
+        remove.classList.add('book-remove', 'book-details');
 
         title.innerText = book.title
         author.innerText = book.author
         pages.innerText = `${book.pages} pages`
         read.innerText = `${book.read ? "Read" : "Unread"}`
+        remove.innerText = "- Remove";
 
-        bookCard.appendChild(title);
-        bookCard.appendChild(author);
-        bookCard.appendChild(pages);
-        bookCard.appendChild(read);
+        bookDetails.appendChild(title);
+        bookDetails.appendChild(author);
+        bookDetails.appendChild(pages);
+        bookDetails.appendChild(read);
+        bookDetails.appendChild(remove);
 
+        bookCard.appendChild(bookDetails);
+        bookCard.appendChild(remove);
         bookDisplay.appendChild(bookCard);
+
+        removeBookButtons = document.querySelectorAll(".book-remove");
+        removeBookButtons.forEach(button => button.addEventListener("click", removeBook));
     });
 }
 
@@ -88,7 +107,11 @@ function submitNewBook() {
     }
 }
 
-
+function removeBook() {
+    const index = this.parentElement.getAttribute("data-index");
+    myLibrary.splice(index, 1);
+    displayBooks();
+}
 
 let theHobbit = new Book("The Hobbit", "J.R.R. Tolkein", 295, false);
 let nineteenEightyFour = new Book("1984", "George Orwell", 300, true);
