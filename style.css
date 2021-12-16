@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap');
 body, p {
     margin: 0;
+    font-family: 'Roboto', sans-serif;
 }
 
 button {
@@ -53,7 +55,7 @@ button {
     height: 1.65rem;
 }
 
-#read-radio {
+#read-status-radio {
     display: flex;
     gap: 1rem;
     margin-top: 0.5rem;
@@ -61,7 +63,7 @@ button {
     padding-left: 0.6rem;
 }
 
-#read {
+#read-radio {
     margin-left: 0;
 }
 
@@ -96,6 +98,41 @@ button {
     margin: 0.7rem 0;
 }
 
+.book-title {
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+.book-pages {
+    font-style: italic;
+}
+
+.read-status {
+    display: flex;
+    justify-content: space-between;
+    background: lightgrey;
+    border-radius: 0.4rem;
+    border: 0.1rem black solid;
+}
+
+.read, .unread {
+    padding: 0.4rem 0.8rem;
+    background: lightgrey;
+    color: white;
+    font-weight: 500;
+    border-style: none;
+    border-radius: 0.4rem;
+    font-size: 0.9rem;
+}
+
+.current-read-status {
+    color: white;
+    background: black;
+    border-radius: 0.4rem;
+    font-weight: bold;
+}
+
 .book-remove {
-    border-radius: 0.2rem;
+    border-radius: 0.4rem;
+    padding: 0.4rem;
 }

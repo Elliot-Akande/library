@@ -8,6 +8,8 @@ submitNewBookButton.addEventListener("click", submitNewBook);
 
 let newBookFormDisplayed = false;
 let removeBookButtons = [];
+let readButtons = [];
+let unreadButtons = [];
 let myLibrary = [];
 
 function Book(title, author, pages, read) {
@@ -20,8 +22,12 @@ function Book(title, author, pages, read) {
         return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read ? "read" : "not read yet"}`
     }
 
-    this.toggleRead = function () {
-        this.read ? this.read = false : this.read = true;
+    this.setRead = function () {
+        this.read = true;
+    }
+    
+    this.setUnread = function () {
+        this.read = false;
     }
 }
 
@@ -34,34 +40,45 @@ function displayBooks() {
     myLibrary.forEach((book, index) => {
         const bookCard = document.createElement("DIV");
         const bookDetails = document.createElement("DIV");
+        const readStatus = document.createElement("DIV");
 
         bookCard.classList.add("book-card");
         bookDetails.classList.add("details-container");
+        readStatus.classList.add("read-status");
+        readStatus.classList.add('book-read', 'book-details');
 
         bookCard.setAttribute('data-index', index);
 
         const title = document.createElement("P");
         const author = document.createElement("P");
         const pages = document.createElement("P");
-        const read = document.createElement("P");
+        const unread = document.createElement("BUTTON");
+        const read = document.createElement("BUTTON");
         const remove = document.createElement("BUTTON");
 
         title.classList.add('book-title', 'book-details');
         author.classList.add('book-author', 'book-details');
         pages.classList.add('book-pages', 'book-details');
-        read.classList.add('book-read', 'book-details');
         remove.classList.add('book-remove', 'book-details');
+
+        read.classList.add('read');
+        unread.classList.add('unread');
+        book.read ? read.classList.add('current-read-status') : unread.classList.add('current-read-status');
 
         title.innerText = book.title
         author.innerText = book.author
         pages.innerText = `${book.pages} pages`
-        read.innerText = `${book.read ? "Read" : "Unread"}`
-        remove.innerText = "- Remove";
+        unread.innerText = "Unread"
+        read.innerText = "Read"
+        remove.innerText = "Remove";
+
+        readStatus.appendChild(unread);
+        readStatus.appendChild(read);
 
         bookDetails.appendChild(title);
         bookDetails.appendChild(author);
         bookDetails.appendChild(pages);
-        bookDetails.appendChild(read);
+        bookDetails.appendChild(readStatus);
         bookDetails.appendChild(remove);
 
         bookCard.appendChild(bookDetails);
@@ -69,7 +86,12 @@ function displayBooks() {
         bookDisplay.appendChild(bookCard);
 
         removeBookButtons = document.querySelectorAll(".book-remove");
+        readButtons = document.querySelectorAll(".read");
+        unreadButtons = document.querySelectorAll(".unread");
+
         removeBookButtons.forEach(button => button.addEventListener("click", removeBook));
+        readButtons.forEach(button => button.addEventListener("click", setRead));
+        unreadButtons.forEach(button => button.addEventListener("click", setUnread));
     });
 }
 
@@ -103,13 +125,25 @@ function submitNewBook() {
         document.querySelector("#title").value = "";
         document.querySelector("#author").value = "";
         document.querySelector("#pages").value = "0";
-        document.querySelector('#unread').checked = true;
+        document.querySelector('#unread-radio').checked = true;
     }
 }
 
 function removeBook() {
     const index = this.parentElement.getAttribute("data-index");
     myLibrary.splice(index, 1);
+    displayBooks();
+}
+
+function setRead() {
+    let book = myLibrary[this.parentElement.parentElement.parentElement.getAttribute("data-index")];
+    book.setRead();
+    displayBooks();
+}
+
+function setUnread() {
+    let book = myLibrary[this.parentElement.parentElement.parentElement.getAttribute("data-index")];
+    book.setUnread();
     displayBooks();
 }
 
