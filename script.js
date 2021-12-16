@@ -151,11 +151,19 @@ let theHobbit = new Book("The Hobbit", "J.R.R. Tolkein", 295, false);
 let nineteenEightyFour = new Book("1984", "George Orwell", 300, true);
 let hitchhikersGuideToTheGalaxy = new Book("Hitchhiker's Guide to the Galaxy", "Douglas Adams", 420, true);
 let grapesOfWrath = new Book("Grapes of Wrath", "John Steinbeck", 302, false);
+let prideAndPrejudice = new Book("Pride and Prejudice", "Jane Austen", 392, false);
+let animalFarm = new Book("Animal Farm", "George Orwell", 130, true);
+let theOdyssey = new Book("The Odyssey", "Homer", 840, false);
+let dune = new Book("Dune", "Frank Herbert", 790, true);
 
 addBookToLibrary(theHobbit);
 addBookToLibrary(nineteenEightyFour);
 addBookToLibrary(hitchhikersGuideToTheGalaxy);
 addBookToLibrary(grapesOfWrath);
+addBookToLibrary(prideAndPrejudice);
+addBookToLibrary(animalFarm);
+addBookToLibrary(theOdyssey);
+addBookToLibrary(dune);
 
 displayBooks();
 
