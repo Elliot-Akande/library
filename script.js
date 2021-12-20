@@ -12,21 +12,28 @@ let readButtons = [];
 let unreadButtons = [];
 let myLibrary = [];
 
-function Book(title, author, pages, read) {
-    this.title = title
-    this.author = author
-    this.pages = pages
-    this.read = read
+class Book {
+    title;
+    author;
+    pages;
+    read;
 
-    this.info = function () {
+    constructor(title, author, pages, read) {
+        this.title = title
+        this.author = author
+        this.pages = pages
+        this.read = read
+    }
+
+    info() {
         return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read ? "read" : "not read yet"}`
     }
 
-    this.setRead = function () {
+    setRead() {
         this.read = true;
     }
-    
-    this.setUnread = function () {
+
+    setUnread() {
         this.read = false;
     }
 }
