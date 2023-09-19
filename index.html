@@ -1,46 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="header">Elliot's Library</div>
     <div id="new-book-container">
-        <button id="new-book-button">+ New Book</button>
-        <div id="new-book-form">
-            <div id="form-main">
-                <div id="form-titles">
-                    <label for="title">Title: </label>
-                    <label for="author">Author: </label>
-                    <label for="pages">Page Count: </label>
-                </div>
-                <div id="form-input">
-                    <input type="text" id="title" name="title" placeholder="Enter title..">
-                    <input type="text" id="author" name="author" placeholder="Enter author..">
-                    <input type="number" id="pages" name="pages" value="0" min="0">
-                </div>
-            </div>
-            <div id="read-status-radio">
-                <div>
-                    <input type="radio" id="unread-radio" name="isRead" value="false" checked>
-                    <label for="unread">Unread</label><br>
-                </div>
-                <div>
-                    <input type="radio" id="read-radio" name="isRead" value="true">
-                    <label for="read">Read</label><br>
-                </div>
-            </div>
-            <button id="submit-new-book">Submit</button>
+      <button id="new-book-button">+ New Book</button>
+      <div id="new-book-form">
+        <div id="form-main">
+          <div id="form-titles">
+            <label for="title">Title: </label>
+            <label for="author">Author: </label>
+            <label for="pages">Page Count: </label>
+          </div>
+          <div id="form-input">
+            <input
+              type="text"
+              id="title"
+              name="title"
+              placeholder="Enter title.."
+            />
+            <input
+              type="text"
+              id="author"
+              name="author"
+              placeholder="Enter author.."
+            />
+            <input type="number" id="pages" name="pages" value="0" min="0" />
+          </div>
         </div>
+        <div id="read-status-radio">
+          <div>
+            <input
+              type="radio"
+              id="unread-radio"
+              name="isRead"
+              value="false"
+              checked
+            />
+            <label for="unread">Unread</label><br />
+          </div>
+          <div>
+            <input type="radio" id="read-radio" name="isRead" value="true" />
+            <label for="read">Read</label><br />
+          </div>
+        </div>
+        <button id="submit-new-book">Submit</button>
+      </div>
     </div>
     <div id="book-display"></div>
-</body>
-
+  </body>
 </html>
