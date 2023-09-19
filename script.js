@@ -1,10 +1,10 @@
 const bookDisplay = document.querySelector("#book-display");
 const newBookButton = document.querySelector("#new-book-button");
 const newBookForm = document.querySelector("#new-book-form");
-const submitNewBookButton = document.querySelector("#submit-new-book");
+const form = document.querySelector("#new-book-form");
 
 newBookButton.addEventListener("click", newBookPressed);
-submitNewBookButton.addEventListener("click", submitNewBook);
+form.addEventListener("submit", submitNewBook);
 
 let newBookFormDisplayed = false;
 let removeBookButtons = [];
@@ -126,23 +126,23 @@ function hideNewBookForm() {
   newBookFormDisplayed = false;
 }
 
-function submitNewBook() {
+function submitNewBook(event) {
   const title = document.querySelector("#title").value;
   const author = document.querySelector("#author").value;
   const pages = document.querySelector("#pages").value;
   const read =
     document.querySelector('input[name="isRead"]:checked').value === "true";
 
-  if (title.length > 1 && author.length > 1 && pages > 0) {
-    const book = new Book(title, author, pages, read);
-    addBookToLibrary(book);
-    displayBooks();
+  const book = new Book(title, author, pages, read);
+  addBookToLibrary(book);
+  displayBooks();
 
-    document.querySelector("#title").value = "";
-    document.querySelector("#author").value = "";
-    document.querySelector("#pages").value = "0";
-    document.querySelector("#unread-radio").checked = true;
-  }
+  document.querySelector("#title").value = "";
+  document.querySelector("#author").value = "";
+  document.querySelector("#pages").value = "";
+  document.querySelector("#unread-radio").checked = true;
+
+  event.preventDefault();
 }
 
 function removeBook() {
